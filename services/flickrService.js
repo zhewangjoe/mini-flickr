@@ -16,6 +16,7 @@ function getRecentFlickrPhotos(callback) {
                 return;
             }
             var photos = result.photos.photo;
+            var i = 0;
             photos.forEach(function (photo) {
                 var title = photo.title;
                 var link = composePhotoUrl(photo.owner, photo.id);
@@ -26,7 +27,8 @@ function getRecentFlickrPhotos(callback) {
                         title: title,
                         link: link,
                         src: src,
-                        tags: tags
+                        tags: tags,
+                        originalIndex: i++
                     });
                     if (recentPhotos.length == 100) {
                         callback();
